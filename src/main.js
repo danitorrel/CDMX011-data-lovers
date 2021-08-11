@@ -17,7 +17,7 @@ window.onload = function printData() {
   characters.map((char) => {
     if (char.id <= 5) {
       firstFiveHTML += characterHTML(char);
-      root.innerHTML = firstFiveHTML;
+      root.innerHTML = firstFiveHTML, colorShadow();
     }
   });
 };
@@ -57,8 +57,8 @@ function print(a) {
   let screen = "";
   a.map((char) => {
     screen += characterHTML(char);
-    return document.getElementById("root").innerHTML = screen;
   });
+  return root.innerHTML = screen //, colorShadow();
 }
 
 function limpiartodo(){
@@ -104,7 +104,7 @@ function filter() {
   }
 
   // Buscador de Personajes
-  searchC.addEventListener("keyup", (e) => {
+searchC.addEventListener("keyup", (e) => {
     limpiartodo();
 const search = e.target.value.toLowerCase();
 const charact = characters.filter((results) => {
@@ -113,3 +113,31 @@ const charact = characters.filter((results) => {
   print(charact);
   });
 
+//funcion estilos status: vivo/muerto
+function colorShadow() {
+  let bgColor = document.querySelectorAll(".card");
+  console.log(bgColor)
+  for(let i=0; i < bgColor.length; i++) {
+    if (characters.status == "Alive"){
+       bgColor[i].style.boxShadow = "0 0 10px rgba(72, 255, 0, 1.0)";
+    } else if (characters.status == "Dead") {
+      return bgColor[i].style.boxShadow = "0 0 10px rgba(6, 0, 83, 1.0)";
+    } else if (characters.status == "unknown"){
+      return bgColor[i].style.boxShadow = "0 0 10px rgba(255, 255, 255, 1.0)";
+    }
+  } 
+}
+
+/*function colorShadow() {
+  let bgColor = document.querySelector(".card");
+  console.log(bgColor)
+  characters.forEach((char) => {
+    if (char.status == "Alive"){
+       return bgColor.style.boxShadow = "0 0 10px rgba(72, 255, 0, 1.0)";
+    } else if (char.status == "Dead") {
+      return bgColor.style.boxShadow = "0 0 10px rgba(6, 0, 83, 1.0)";
+    } else if (char.status == "unknown"){
+      return bgColor.style.boxShadow = "0 0 10px rgba(255, 255, 255, 1.0)";
+    }
+  }); 
+} */
