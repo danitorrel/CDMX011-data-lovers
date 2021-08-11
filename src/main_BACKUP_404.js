@@ -29,7 +29,10 @@ function printFirstFiveCharacters() {
   characters.forEach((char) => {
     if (char.id <= 5) {
       firstFiveHTML += characterHTML(char);
+<<<<<<< HEAD
       root.innerHTML = firstFiveHTML, colorShadow();
+=======
+>>>>>>> 992f3ad98eeebf83b4079125816898fcb35043b6
     }
   });
 
@@ -62,6 +65,19 @@ selectSort.addEventListener("change", function(e){
     print(newDataSort)
   }
 });
+
+
+<<<<<<< HEAD
+// Función de imprimir 
+function print(a) {
+  let screen = "";
+  a.map((char) => {
+    screen += characterHTML(char);
+  });
+  return root.innerHTML = screen //, colorShadow();
+}
+=======
+>>>>>>> 992f3ad98eeebf83b4079125816898fcb35043b6
 
 
 // Funcion que cruza filtrados 
@@ -98,9 +114,18 @@ function filter() {
 
   // Buscador de Personajes
 searchC.addEventListener("keyup", (e) => {
+<<<<<<< HEAD
+    limpiartodo();
+const search = e.target.value.toLowerCase();
+const charact = characters.filter((results) => {
+  return results.name.toLowerCase().includes(search); 
+});
+  print(charact);
+=======
   const search = e.target.value.toLowerCase();
   const charact = characters.filter((results) => {
     return results.name.toLowerCase().includes(search); 
+>>>>>>> 992f3ad98eeebf83b4079125816898fcb35043b6
   });
   
   print(charact);

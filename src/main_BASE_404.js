@@ -12,28 +12,14 @@ const searchC = document.getElementById("search1");
 const root=document.getElementById("root")
 
 // Pantalla Principal
-window.onload = printFirstFiveCharacters
-
-// Función de imprimir 
-function print(characters) {
-  let screen = "";
-  characters.forEach((char) => {
-    screen += characterHTML(char);
-  });
-
-  return root.innerHTML = screen;
-}
-
-function printFirstFiveCharacters() {
+window.onload = function printData() {
   let firstFiveHTML = "";
-  characters.forEach((char) => {
+  characters.map((char) => {
     if (char.id <= 5) {
       firstFiveHTML += characterHTML(char);
-      root.innerHTML = firstFiveHTML, colorShadow();
+      root.innerHTML = firstFiveHTML;
     }
   });
-
-  root.innerHTML = firstFiveHTML;
 };
 
 // Pone en HTML
@@ -55,14 +41,31 @@ selectS.addEventListener("change", filter);
 
 selectSort.addEventListener("change", function(e){
   if(e.target.value == "za"){
+    limpiartodo()
     let newDataSort = sortDe(characters)
     print(newDataSort)
   }else if(e.target.value == "az"){
+    limpiartodo()
     let newDataSort = sortAs(characters)
-    print(newDataSort)
+    print (newDataSort)
   }
 });
 
+
+// Función de imprimir 
+function print(a) {
+  let screen = "";
+  a.map((char) => {
+    screen += characterHTML(char);
+    return document.getElementById("root").innerHTML = screen;
+  });
+}
+
+function limpiartodo(){
+  while(root.firstChild){
+    root.removeChild(root.firstChild)
+  }
+}
 
 // Funcion que cruza filtrados 
 function filter() {
@@ -74,10 +77,12 @@ function filter() {
   if (gender != "Gender") {
     filteredChar.push("gender");
     if (filteredChar.length == 1) {
+      limpiartodo();
       preFilter = filterGender(preFilter, gender, true);
       print(preFilter);
     }
     else {
+      limpiartodo();
       preFilter = filterGender(preFilter, gender, false);
       print(preFilter);
     }
@@ -86,51 +91,25 @@ function filter() {
   if (stat != "Status") {
     filteredChar.push("status");
     if (filteredChar.length == 1) {
+      limpiartodo();
       preFilter = filterStatus(preFilter, stat, true);
       print(preFilter);
     }
     else {
+      limpiartodo();
       preFilter = filterStatus(preFilter, stat, false);
       print(preFilter);
     }
   }
-}
+  }
 
   // Buscador de Personajes
-searchC.addEventListener("keyup", (e) => {
-  const search = e.target.value.toLowerCase();
-  const charact = characters.filter((results) => {
-    return results.name.toLowerCase().includes(search); 
-  });
-  
-  print(charact);
+  searchC.addEventListener("keyup", (e) => {
+    limpiartodo();
+const search = e.target.value.toLowerCase();
+const charact = characters.filter((results) => {
+  return results.name.toLowerCase().includes(search); 
 });
+  print(charact);
+  });
 
-//funcion estilos status: vivo/muerto
-function colorShadow() {
-  let bgColor = document.querySelectorAll(".card");
-  console.log(bgColor)
-  for(let i=0; i < bgColor.length; i++) {
-    if (characters.status == "Alive"){
-       bgColor[i].style.boxShadow = "0 0 10px rgba(72, 255, 0, 1.0)";
-    } else if (characters.status == "Dead") {
-      return bgColor[i].style.boxShadow = "0 0 10px rgba(6, 0, 83, 1.0)";
-    } else if (characters.status == "unknown"){
-      return bgColor[i].style.boxShadow = "0 0 10px rgba(255, 255, 255, 1.0)";
-    }
-  } 
-}
-
-/*function colorShadow() {
-  let bgColor = document.querySelector(".card");
-  console.log(bgColor)
-  characters.forEach((char) => {
-    if (char.status == "Alive"){
-       return bgColor.style.boxShadow = "0 0 10px rgba(72, 255, 0, 1.0)";
-    } else if (char.status == "Dead") {
-      return bgColor.style.boxShadow = "0 0 10px rgba(6, 0, 83, 1.0)";
-    } else if (char.status == "unknown"){
-      return bgColor.style.boxShadow = "0 0 10px rgba(255, 255, 255, 1.0)";
-    }
-  }); 
-} */
