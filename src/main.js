@@ -1,9 +1,8 @@
 import data from "./data/rickandmorty/rickandmorty.js";
-import { filterGender, filterStatus, sortDe, sortAs } from "./data.js";
+import { filterGender, filterStatus, sortData } from "./data.js";
 
 
 const characters = data.results;
-//const personajes = ...data. 
 
 const selectG = document.getElementById("gender");
 const selectS = document.getElementById("status");
@@ -21,20 +20,34 @@ function print(characters) {
     screen += characterHTML(char);
   });
 
-  return root.innerHTML = screen;
+  return root.innerHTML = screen, colorShadow();
 }
 
-function printFirstFiveCharacters() {
+export function printFirstFiveCharacters() {
   let firstFiveHTML = "";
   characters.forEach((char) => {
     if (char.id <= 5) {
       firstFiveHTML += characterHTML(char);
-      root.innerHTML = firstFiveHTML, colorShadow();
     }
   });
 
   root.innerHTML = firstFiveHTML;
-};
+}
+
+//funcion estilos status: vivo/muerto
+/* function colorShadow() {
+  let bgColor = document.querySelectorAll(".card");
+  console.log(bgColor)
+  for(let i=0; i < bgColor.length; i++) {
+    if (characters.status === "Alive"){
+      return bgColor[i].style.boxShadow = "0 0 10px rgba(72, 255, 0, 1.0)";
+    } else if (characters.status === "Dead") {
+      return bgColor[i].style.boxShadow = "0 0 10px rgba(6, 0, 83, 1.0)";
+    } else if (characters.status === "unknown"){
+      return bgColor[i].style.boxShadow = "0 0 10px rgba(255, 255, 255, 1.0)";
+    }
+  } 
+} */
 
 // Pone en HTML
 function characterHTML(info) {
@@ -106,31 +119,16 @@ searchC.addEventListener("keyup", (e) => {
   print(charact);
 });
 
-//funcion estilos status: vivo/muerto
 function colorShadow() {
   let bgColor = document.querySelectorAll(".card");
-  console.log(bgColor)
-  for(let i=0; i < bgColor.length; i++) {
-    if (characters.status == "Alive"){
-       bgColor[i].style.boxShadow = "0 0 10px rgba(72, 255, 0, 1.0)";
-    } else if (characters.status == "Dead") {
-      return bgColor[i].style.boxShadow = "0 0 10px rgba(6, 0, 83, 1.0)";
-    } else if (characters.status == "unknown"){
-      return bgColor[i].style.boxShadow = "0 0 10px rgba(255, 255, 255, 1.0)";
-    }
-  } 
-}
-
-/*function colorShadow() {
-  let bgColor = document.querySelector(".card");
-  console.log(bgColor)
   characters.forEach((char) => {
     if (char.status == "Alive"){
-       return bgColor.style.boxShadow = "0 0 10px rgba(72, 255, 0, 1.0)";
+      bgColor.style.boxShadow = "0 0 10px rgba(72, 255, 0, 1.0)";
     } else if (char.status == "Dead") {
-      return bgColor.style.boxShadow = "0 0 10px rgba(6, 0, 83, 1.0)";
+      bgColor.style.boxShadow = "0 0 10px rgba(6, 0, 83, 1.0)";
     } else if (char.status == "unknown"){
-      return bgColor.style.boxShadow = "0 0 10px rgba(255, 255, 255, 1.0)";
+      bgColor.style.boxShadow = "0 0 10px rgba(255, 255, 255, 1.0)";
     }
+    return bgColor(char);
   }); 
-} */
+} 

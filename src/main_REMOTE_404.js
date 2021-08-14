@@ -33,7 +33,7 @@ function printFirstFiveCharacters() {
   });
 
   root.innerHTML = firstFiveHTML;
-};
+}
 
 // Pone en HTML
 function characterHTML(info) {

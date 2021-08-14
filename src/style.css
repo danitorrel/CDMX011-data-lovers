@@ -1,72 +1,98 @@
 body {
- background: -webkit-linear-gradient(top,#05001d, #0e043d, #3c0d63, #651a7c) ;
- background-attachment: fixed;
+  background: -webkit-linear-gradient(top,#05001d, #0e043d, #3c0d63, #651a7c);
+  background-attachment: fixed;
+  overflow-x: hidden;
 }
 
 header {
-  display: table;
+  display: flex;
+  flex-flow: row wrap;
   position: relative;
-  left: 40%;
-  margin-right: -50%;
+  padding-left: 3rem;
+  position: -webkit-sticky;
+  position: sticky; 
+  z-index: 10;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(1rem);
+  border-radius: 15px;
+  /* margin-right: 4rem;*/
 }
+
 
 #logo {
   margin-top: 1rem;
-  width: 250px;
+  width: 270px;
   padding-bottom: 20px;
   padding-right: 10px;
 }
 
-.menu {
-  gap: 10px;
-  font-family: 'Oswald', sans-serif;
-  font-size: 15px;
+.content {
   margin-left: 2rem;
-  margin-right: 2rem;
+}
+
+
+.menu {
+  gap: 8px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
   color: #FFFF;
   width: 100%;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-evenly;
   align-items: baseline;
   margin-top: 30px;
   letter-spacing: 2px;
+  /* background-color: #0e043d; */
+  /*justify-content: space-evenly;*/
 }
 
-.menu select{
-  
+#gender, #status, #sort {
+  cursor: pointer;
+}
+
+.menu select, #search1 {
   height: auto;
-  width: 10%;
+  /*width: 15%; ----esto estaba bloqueando el width que ya tenias definido arriba en .menu / menu select es un hijo de menu*/
   margin: 1rem;
   align-content: center;
   /*background-color: ; */
   border-radius: 7px;
   font-family: 'Oswald', sans-serif;
+  font-weight: 400;
   font-size: 15px;
+  color: #651a7ce3;
   letter-spacing: 1px;
 }
 
-#search1 {
-  height: auto;
-  width: 15%;
-  margin: 1rem;
-  align-content: center;
-  /*background-color: ; */
-  border-radius: 7px;
-  font-family: 'Oswald', sans-serif;
-  font-size: 15px;
-  letter-spacing: 1px;
+#search1::placeholder {
+  color: #651a7c9d;
 }
+
+@media screen and (min-width: 320px) and (max-width: 700px) {
+  header {
+    position: static;
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+    gap: 0;
+  }
+}
+
 
 #root {
   display: grid;
   max-width: none;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 2rem;
   line-height: 1.3;
   padding: 15px;
   padding-top: 0;
-  margin: 5rem;
+  margin: 2.5rem;
 }
 
 .card{
@@ -83,13 +109,9 @@ header {
 
 .card:hover {
   border: 1px solid rgba(255, 255, 255, 0.7);
-  border-radius: 15px;;
+  border-radius: 15px;
   transition: all .5s ease-in-out;
   opacity: 1;
-}
-
-.card:hover #imgn img{
-  transform: scale(1.1);
 }
 
 #imgn {
@@ -114,11 +136,12 @@ header {
 
 #card_content > dt {
   font-family: 'Oswald', sans-serif;
+  font-weight: 600;
   margin-left: 0;
   margin-top: 0;
   margin-bottom: 10px;
   letter-spacing: 5px;
-  font-size: 17px;
+  font-size: 20px;
   color:rgb(255, 255, 255);
   align-items: center;
   text-align: right;
@@ -126,9 +149,9 @@ header {
 
 #card_content > dd {
   font-family: 'Open Sans', sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   color:rgb(255, 255, 255);
-  line-height: 1.8;
+  line-height: 1.9;
   margin-left: 0;
 }
 
