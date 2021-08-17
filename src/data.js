@@ -1,11 +1,6 @@
 import data from "./data/rickandmorty/rickandmorty.js";
 
-export function filterGender(
-  dataF,
-  gender,
-  allCharacters,
-  characters = data.results
-) {
+export function filterGender(dataF, gender, allCharacters, characters = data.results) {
   let filterByGender;
   if (allCharacters) {
     filterByGender = characters.filter(function (gen) {
@@ -19,12 +14,7 @@ export function filterGender(
   return filterByGender;
 }
 
-export function filterStatus(
-  dataF,
-  status,
-  allCharacters,
-  characters = data.results
-) {
+export function filterStatus( dataF, status, allCharacters, characters = data.results) {
   let filterByStatus;
   if (allCharacters) {
     filterByStatus = characters.filter(function (stat) {

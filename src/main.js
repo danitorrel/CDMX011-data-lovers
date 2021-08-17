@@ -1,5 +1,5 @@
 import data from "./data/rickandmorty/rickandmorty.js";
-import { filterGender, filterStatus, sortData } from "./data.js";
+import { filterGender, filterStatus, sortDe, sortAs } from "./data.js";
 
 
 const characters = data.results;
@@ -19,7 +19,6 @@ function print(characters) {
   characters.forEach((char) => {
     screen += characterHTML(char);
   });
-
   return root.innerHTML = screen, colorShadow();
 }
 
@@ -34,20 +33,19 @@ export function printFirstFiveCharacters() {
   root.innerHTML = firstFiveHTML;
 }
 
-//funcion estilos status: vivo/muerto
-/* function colorShadow() {
+function colorShadow() {
   let bgColor = document.querySelectorAll(".card");
   console.log(bgColor)
-  for(let i=0; i < bgColor.length; i++) {
+  bgColor.forEach((e) => {
     if (characters.status === "Alive"){
-      return bgColor[i].style.boxShadow = "0 0 10px rgba(72, 255, 0, 1.0)";
+      return e.style.boxShadow = "0 0 10px rgba(72, 255, 0, 1.0)";
     } else if (characters.status === "Dead") {
-      return bgColor[i].style.boxShadow = "0 0 10px rgba(6, 0, 83, 1.0)";
+      return e.style.boxShadow = "0 0 10px rgba(6, 0, 83, 1.0)";
     } else if (characters.status === "unknown"){
-      return bgColor[i].style.boxShadow = "0 0 10px rgba(255, 255, 255, 1.0)";
+      return e.style.boxShadow = "0 0 10px rgba(255, 255, 255, 1.0)";
     }
-  } 
-} */
+  }); 
+} 
 
 // Pone en HTML
 function characterHTML(info) {
@@ -118,17 +116,3 @@ searchC.addEventListener("keyup", (e) => {
   
   print(charact);
 });
-
-function colorShadow() {
-  let bgColor = document.querySelectorAll(".card");
-  characters.forEach((char) => {
-    if (char.status == "Alive"){
-      bgColor.style.boxShadow = "0 0 10px rgba(72, 255, 0, 1.0)";
-    } else if (char.status == "Dead") {
-      bgColor.style.boxShadow = "0 0 10px rgba(6, 0, 83, 1.0)";
-    } else if (char.status == "unknown"){
-      bgColor.style.boxShadow = "0 0 10px rgba(255, 255, 255, 1.0)";
-    }
-    return bgColor(char);
-  }); 
-} 
