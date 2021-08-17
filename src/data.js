@@ -30,7 +30,7 @@ export function filterStatus( dataF, status, allCharacters, characters = data.re
 
 export function sortDe(data) {
   return data.sort((a, b) => {
-    return a.name < b.name ? 1 : -1;
+    return a.name < b.name ? 1 : -1; 
   });
 }
 

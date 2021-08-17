@@ -19,8 +19,9 @@ function print(characters) {
   characters.forEach((char) => {
     screen += characterHTML(char);
   });
-  return root.innerHTML = screen, colorShadow();
+  return root.innerHTML = screen;
 }
+
 
 export function printFirstFiveCharacters() {
   let firstFiveHTML = "";
@@ -33,22 +34,11 @@ export function printFirstFiveCharacters() {
   root.innerHTML = firstFiveHTML;
 }
 
-function colorShadow() {
-  let bgColor = document.querySelectorAll(".card");
-  console.log(bgColor)
-  bgColor.forEach((e) => {
-    if (characters.status === "Alive"){
-      return e.style.boxShadow = "0 0 10px rgba(72, 255, 0, 1.0)";
-    } else if (characters.status === "Dead") {
-      return e.style.boxShadow = "0 0 10px rgba(6, 0, 83, 1.0)";
-    } else if (characters.status === "unknown"){
-      return e.style.boxShadow = "0 0 10px rgba(255, 255, 255, 1.0)";
-    }
-  }); 
-} 
+
 
 // Pone en HTML
 function characterHTML(info) {
+  
   return `<div class="card">  
     <img id="imgn" src="${info.image}" alt="characters">
     <dl id="card_content">

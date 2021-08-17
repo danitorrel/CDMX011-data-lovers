@@ -55,7 +55,6 @@ header {
   /*width: 15%; ----esto estaba bloqueando el width que ya tenias definido arriba en .menu / menu select es un hijo de menu*/
   margin: 1rem;
   align-content: center;
-  /*background-color: ; */
   border-radius: 7px;
   font-family: 'Oswald', sans-serif;
   font-weight: 400;
@@ -96,7 +95,7 @@ header {
 }
 
 .card{
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 9px rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(1rem);
   background-color:rgba(255, 255, 255, 0.06); 
   border-radius: 15px;
@@ -113,7 +112,7 @@ header {
   transition: all .5s ease-in-out;
   opacity: 1;
 }
-
+ 
 #imgn {
   width: 100%;
   display: inline-block;
@@ -140,7 +139,7 @@ header {
   margin-left: 0;
   margin-top: 0;
   margin-bottom: 10px;
-  letter-spacing: 5px;
+  letter-spacing: 4px;
   font-size: 20px;
   color:rgb(255, 255, 255);
   align-items: center;

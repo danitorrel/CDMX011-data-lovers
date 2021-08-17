@@ -40,11 +40,8 @@ describe("testing filter by gender", () => {
       expect(filterStatus(statusM, "unknown")).toHaveLength(2);
     });
 
-    /*  it ('should filter dead', () => {
-    expect(filterStatus(statusM, 'Dead')).toEqual();
-  });  */
-
-    it('should contain "Evil Beth Clone" ', () => {
+  
+    it('return only dead characters', () => {
       expect(filterStatus(statusMock, "Dead")).toContain(statusMock[2]);
     });
   }),
@@ -56,7 +53,7 @@ describe("testing filter by gender", () => {
       expect(filterStatus(filter1, "unknown")).toHaveLength(1);
     });
 
-    it('should contain "Arthricia" ', () => {
+    it('should filter by status and gender ', () => {
       const filter1 = filterStatus(statusMock, "Alive");
 
       expect(filterGender(filter1, "Female")).toHaveLength(1);
