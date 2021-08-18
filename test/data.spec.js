@@ -60,7 +60,7 @@ describe("mix filter test", () => {
 }),
 
 describe("testing sort", () => {
-    it("should be a function", () => {
+  it("should be a function", () => {
     expect(typeof sortDe).toBe("function");
   });
 
