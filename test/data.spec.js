@@ -25,55 +25,54 @@ describe("testing filter by gender", () => {
   });
 }),
 
-  describe("testing filter by status", () => {
-    it("should be a function", () => {
-      expect(typeof filterStatus).toBe("function");
-    });
+describe("testing filter by status", () => {
+  it("should be a function", () => {
+    expect(typeof filterStatus).toBe("function");
+  });
 
-    it("is not Null", () => {
-      const result = filterStatus(statusM, "Dead", true, statusM);
+  it("is not Null", () => {
+    const result = filterStatus(statusM, "Dead", true, statusM);
+    expect(result).not.toBeNull();
+  });
 
-      expect(result).not.toBeNull();
-    });
-
-    it("return only unknown characters", () => {
-      expect(filterStatus(statusM, "unknown")).toHaveLength(2);
-    });
+  it("return only unknown characters", () => {
+    expect(filterStatus(statusM, "unknown")).toHaveLength(2);
+  });
 
   
-    it('return only dead characters', () => {
-      expect(filterStatus(statusMock, "Dead")).toContain(statusMock[2]);
-    });
-  }),
-
-  describe("mix filter test", () => {
-    it('should filter by gender and status" ', () => {
-      const filter1 = filterGender(statusMock, "Male");
-
-      expect(filterStatus(filter1, "unknown")).toHaveLength(1);
-    });
-
-    it('should filter by status and gender ', () => {
-      const filter1 = filterStatus(statusMock, "Alive");
-
-      expect(filterGender(filter1, "Female")).toHaveLength(1);
-    });
-  }),
-
-  describe("testing sort", () => {
-    it("should be a function", () => {
-      expect(typeof sortDe).toBe("function");
-    });
-
-    it("should be a function", () => {
-      expect(typeof sortAs).toBe("function");
-    });
-
-    it("should sort by A to Z", () => {
-      expect(sortAs(statusMock)).toEqual(sortAZMock);
-    });
-
-    it("should sort by Z to A", () => {
-      expect(sortDe(statusMock)).toEqual(sortZAMock);
-    });
+  it('return only dead characters', () => {
+    expect(filterStatus(statusMock, "Dead")).toContain(statusMock[2]);
   });
+}),
+
+describe("mix filter test", () => {
+  it('should filter by gender and status" ', () => {
+    const filter1 = filterGender(statusMock, "Male");
+
+    expect(filterStatus(filter1, "unknown")).toHaveLength(1);
+  });
+
+  it('should filter by status and gender ', () => {
+    const filter1 = filterStatus(statusMock, "Alive");
+
+    expect(filterGender(filter1, "Female")).toHaveLength(1);
+  });
+}),
+
+describe("testing sort", () => {
+    it("should be a function", () => {
+    expect(typeof sortDe).toBe("function");
+  });
+
+  it("should be a function", () => {
+    expect(typeof sortAs).toBe("function");
+  });
+
+  it("should sort by A to Z", () => {
+    expect(sortAs(statusMock)).toEqual(sortAZMock);
+  });
+
+  it("should sort by Z to A", () => {
+    expect(sortDe(statusMock)).toEqual(sortZAMock);
+  });
+});

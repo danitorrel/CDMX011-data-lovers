@@ -16,9 +16,7 @@ header {
   background-color: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(1rem);
   border-radius: 15px;
-  /* margin-right: 4rem;*/
 }
-
 
 #logo {
   margin-top: 1rem;
@@ -31,7 +29,6 @@ header {
   margin-left: 2rem;
 }
 
-
 .menu {
   gap: 8px;
   font-family: 'Oswald', sans-serif;
@@ -42,17 +39,14 @@ header {
   align-items: baseline;
   margin-top: 30px;
   letter-spacing: 2px;
-  /* background-color: #0e043d; */
-  /*justify-content: space-evenly;*/
 }
 
 #gender, #status, #sort {
   cursor: pointer;
 }
 
-.menu select, #search1 {
+select, #search1 {
   height: auto;
-  /*width: 15%; ----esto estaba bloqueando el width que ya tenias definido arriba en .menu / menu select es un hijo de menu*/
   margin: 1rem;
   align-content: center;
   border-radius: 7px;
@@ -67,9 +61,10 @@ header {
   color: #651a7c9d;
 }
 
-@media screen and (min-width: 320px) and (max-width: 700px) {
+@media screen and (min-width: 280px) and (max-width: 598px) {
   header {
     position: static;
+    margin-right: 0;
   }
 
   .menu {
@@ -82,6 +77,25 @@ header {
   }
 }
 
+@media screen and (min-width: 599px) and (max-width: 920px) {
+  header {
+    position: static;
+    margin: auto;
+  }
+  
+  .content {
+    margin-left: 5px;
+  }
+
+  .menu {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+    gap: 0;
+  }
+}
 
 #root {
   display: grid;
@@ -148,7 +162,7 @@ header {
 
 #card_content > dd {
   font-family: 'Open Sans', sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   color:rgb(255, 255, 255);
   line-height: 1.9;
   margin-left: 0;
@@ -160,4 +174,12 @@ header {
 
 #card_content > dd:last-of-type {
   margin-bottom: 10px;
+}
+
+footer {
+color: rgba(255, 255, 255, 0.9);
+text-align: right;
+font-family: 'Open Sans', sans-serif;
+font-size: 13px;
+margin-right: 3.2rem;
 }

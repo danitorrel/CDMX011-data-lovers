@@ -13,7 +13,6 @@ const root=document.getElementById("root")
 // Pantalla Principal
 window.onload = printFirstFiveCharacters
 
-// Función de imprimir 
 function print(characters) {
   let screen = "";
   characters.forEach((char) => {
@@ -22,21 +21,17 @@ function print(characters) {
   return root.innerHTML = screen;
 }
 
-
-export function printFirstFiveCharacters() {
+function printFirstFiveCharacters() {
   let firstFiveHTML = "";
   characters.forEach((char) => {
     if (char.id <= 5) {
       firstFiveHTML += characterHTML(char);
     }
   });
-
+  
   root.innerHTML = firstFiveHTML;
 }
 
-
-
-// Pone en HTML
 function characterHTML(info) {
   
   return `<div class="card">  
@@ -63,7 +58,6 @@ selectSort.addEventListener("change", function(e){
     print(newDataSort)
   }
 });
-
 
 // Funcion que cruza filtrados 
 function filter() {
@@ -97,7 +91,7 @@ function filter() {
   }
 }
 
-  // Buscador de Personajes
+// Buscador de Personajes
 searchC.addEventListener("keyup", (e) => {
   const search = e.target.value.toLowerCase();
   const charact = characters.filter((results) => {
