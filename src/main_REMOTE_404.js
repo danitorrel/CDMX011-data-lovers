@@ -3,6 +3,7 @@ import { filterGender, filterStatus, sortDe, sortAs } from "./data.js";
 
 
 const characters = data.results;
+//const personajes = ...data. 
 
 const selectG = document.getElementById("gender");
 const selectS = document.getElementById("status");
@@ -13,11 +14,13 @@ const root=document.getElementById("root")
 // Pantalla Principal
 window.onload = printFirstFiveCharacters
 
+// Función de imprimir 
 function print(characters) {
   let screen = "";
   characters.forEach((char) => {
     screen += characterHTML(char);
   });
+
   return root.innerHTML = screen;
 }
 
@@ -28,12 +31,12 @@ function printFirstFiveCharacters() {
       firstFiveHTML += characterHTML(char);
     }
   });
-  
+
   root.innerHTML = firstFiveHTML;
 }
 
+// Pone en HTML
 function characterHTML(info) {
-  
   return `<div class="card">  
     <img id="imgn" src="${info.image}" alt="characters">
     <dl id="card_content">
@@ -58,6 +61,9 @@ selectSort.addEventListener("change", function(e){
     print(newDataSort)
   }
 });
+
+
+
 
 // Funcion que cruza filtrados 
 function filter() {
@@ -91,7 +97,7 @@ function filter() {
   }
 }
 
-// Buscador de Personajes
+  // Buscador de Personajes
 searchC.addEventListener("keyup", (e) => {
   const search = e.target.value.toLowerCase();
   const charact = characters.filter((results) => {
@@ -100,3 +106,4 @@ searchC.addEventListener("keyup", (e) => {
   
   print(charact);
 });
+

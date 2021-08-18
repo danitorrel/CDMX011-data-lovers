@@ -1,20 +1,41 @@
-/* const found = characters.filter(value => value.id <= 5) 
-console.log(found); */ 
+import data from "./data/rickandmorty/rickandmorty.js";
 
-/*export function personajesP(nombresF) {
-  const found = data.results.filter(value => value.id <= 5)
-return found;
-}*/
+export function filterGender(dataF, gender, allCharacters, characters = data.results) {
+  let filterByGender;
+  if (allCharacters) {
+    filterByGender = characters.filter(function (gen) {
+      return gen.gender === gender;
+    });
+  } else {
+    filterByGender = dataF.filter(function (gen) {
+      return gen.gender === gender;
+    });
+  }
+  return filterByGender;
+}
 
-/* export const name = data.results.sort((a, b) => {
-  return a.id < b.id ? -1 : 1;
-});
-console.log(name); 
-*/
+export function filterStatus( dataF, status, allCharacters, characters = data.results) {
+  let filterByStatus;
+  if (allCharacters) {
+    filterByStatus = characters.filter(function (stat) {
+      return stat.status === status;
+    });
+  } else {
+    filterByStatus = dataF.filter(function (stat) {
+      return stat.status == status;
+    });
+  }
+  return filterByStatus;
+}
 
-/* export const example = () => {
-  return 'example';
-}; */
+export function sortDe(data) {
+  return data.sort((a, b) => {
+    return a.name < b.name ? 1 : -1; 
+  });
+}
 
-
-
+export function sortAs(data) {
+  return data.sort((a, b) => {
+    return a.name > b.name ? 1 : -1;
+  });
+}

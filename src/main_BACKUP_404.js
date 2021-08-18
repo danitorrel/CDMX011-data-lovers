@@ -3,6 +3,7 @@ import { filterGender, filterStatus, sortDe, sortAs } from "./data.js";
 
 
 const characters = data.results;
+//const personajes = ...data. 
 
 const selectG = document.getElementById("gender");
 const selectS = document.getElementById("status");
@@ -13,11 +14,13 @@ const root=document.getElementById("root")
 // Pantalla Principal
 window.onload = printFirstFiveCharacters
 
+// Función de imprimir 
 function print(characters) {
   let screen = "";
   characters.forEach((char) => {
     screen += characterHTML(char);
   });
+
   return root.innerHTML = screen;
 }
 
@@ -26,14 +29,15 @@ function printFirstFiveCharacters() {
   characters.forEach((char) => {
     if (char.id <= 5) {
       firstFiveHTML += characterHTML(char);
+      root.innerHTML = firstFiveHTML, colorShadow();
     }
   });
-  
+
   root.innerHTML = firstFiveHTML;
 }
 
+// Pone en HTML
 function characterHTML(info) {
-  
   return `<div class="card">  
     <img id="imgn" src="${info.image}" alt="characters">
     <dl id="card_content">
@@ -58,6 +62,9 @@ selectSort.addEventListener("change", function(e){
     print(newDataSort)
   }
 });
+
+
+
 
 // Funcion que cruza filtrados 
 function filter() {
@@ -91,7 +98,7 @@ function filter() {
   }
 }
 
-// Buscador de Personajes
+  // Buscador de Personajes
 searchC.addEventListener("keyup", (e) => {
   const search = e.target.value.toLowerCase();
   const charact = characters.filter((results) => {
@@ -100,3 +107,32 @@ searchC.addEventListener("keyup", (e) => {
   
   print(charact);
 });
+
+//funcion estilos status: vivo/muerto
+function colorShadow() {
+  let bgColor = document.querySelectorAll(".card");
+  console.log(bgColor)
+  for(let i=0; i < bgColor.length; i++) {
+    if (characters.status == "Alive"){
+       bgColor[i].style.boxShadow = "0 0 10px rgba(72, 255, 0, 1.0)";
+    } else if (characters.status == "Dead") {
+      return bgColor[i].style.boxShadow = "0 0 10px rgba(6, 0, 83, 1.0)";
+    } else if (characters.status == "unknown"){
+      return bgColor[i].style.boxShadow = "0 0 10px rgba(255, 255, 255, 1.0)";
+    }
+  } 
+}
+
+/*function colorShadow() {
+  let bgColor = document.querySelector(".card");
+  console.log(bgColor)
+  characters.forEach((char) => {
+    if (char.status == "Alive"){
+       return bgColor.style.boxShadow = "0 0 10px rgba(72, 255, 0, 1.0)";
+    } else if (char.status == "Dead") {
+      return bgColor.style.boxShadow = "0 0 10px rgba(6, 0, 83, 1.0)";
+    } else if (char.status == "unknown"){
+      return bgColor.style.boxShadow = "0 0 10px rgba(255, 255, 255, 1.0)";
+    }
+  }); 
+} */
