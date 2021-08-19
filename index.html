@@ -17,10 +17,11 @@
 
   <body>
     <header>
-      <a href="index.html"><img src="rickmortylogo.png" id="logo" /></a>
+      <a href="index.html"><img src="RickMortyLogo.png" id="logo" /></a>
 
       <div class="content">
         <nav class="menu">
+          <div>
           <span class="iconify" data-inline="false" data-icon="clarity:filter-solid"></span>
 
           <select name="Gender" id="gender">
@@ -37,16 +38,21 @@
             <option>Dead</option>
             <option>unknown</option>
           </select>
+          </div>
 
+          <div>
           <span class="iconify" data-icon="fluent:arrow-sort-28-filled"></span>
           <select name="Sort" id="sort">
             <option value="select-one">Sort</option>
             <option value="az">A to Z</option>
             <option value="za">Z to A</option>
           </select>
+          </div>
 
+          <div>
           <span class="iconify" data-icon="fa-solid:search"></span>
           <input type="text" id="search1" placeholder="Search character" />
+          </div>
         </nav>
       </div>
     </header>
