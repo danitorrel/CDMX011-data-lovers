@@ -22,12 +22,12 @@ export function filterStatus( dataF, status, allCharacters, characters = data.re
     });
   } else {
     filterByStatus = dataF.filter(function (stat) {
-      return stat.status == status;
+      return stat.status === status;
     });
   }
   return filterByStatus;
 }
-
+//funcion de acomodo
 export function sortDe(data) {
   return data.sort((a, b) => {
     return a.name < b.name ? 1 : -1; 
